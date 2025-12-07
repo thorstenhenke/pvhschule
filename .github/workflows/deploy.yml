@@ -11,7 +11,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
+      
+      # NEU: Pandoc installieren
+      # Wir nutzen hier eine fertige Action, die Pandoc für uns einrichtet.
+      - name: Install Pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+        with:
+          pandoc-version: 'latest' # Installiert immer die aktuellste Version
+          
       - name: Build Site
         run: make
 
